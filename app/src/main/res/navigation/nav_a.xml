@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_a"
+    android:label="GraphA"
+    app:startDestination="@id/GraphANoParamFragment">
+
+    <include app:graph="@navigation/nav_b" />
+    <include app:graph="@navigation/nav_c" />
+
+    <fragment
+        android:id="@+id/GraphANoParamFragment"
+        android:name="github.xuqk.navigationprocessor.graph_a.GraphANoParamFragment"
+        android:label="GraphANoParamFragment"/>
+
+    <fragment
+        android:id="@+id/CommonFragment"
+        android:name="github.xuqk.navigationprocessor.CommonFragment"
+        android:label="CommonFragment"/>
+
+    <fragment
+        android:id="@+id/GraphBNoParamFragment"
+        android:name="github.xuqk.navigationprocessor.graph_b.GraphBNoParamFragment"
+        android:label="GraphBNoParamFragment"/>
+
+    <fragment
+        android:id="@+id/GraphAParamFragment"
+        android:name="github.xuqk.navigationprocessor.graph_a.GraphAParamFragment"
+        android:label="GraphAParamFragment">
+        <argument
+            android:name="argInt"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="argStringNullable"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="argStringNonNull"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+
+</navigation>

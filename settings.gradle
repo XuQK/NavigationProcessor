@@ -1,0 +1,13 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+rootProject.name = "NavigationProcessor"
+include ':app'
+include ':kd-nav-annotations'
+include ':kd-nav-processor'
+include ':kd-nav-fragment-ktx'

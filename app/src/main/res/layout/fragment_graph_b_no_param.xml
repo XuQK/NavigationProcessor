@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="基本参数" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp">
+
+        <EditText
+            android:id="@+id/et_int"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Int"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_string"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="String"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_string_nullable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="String Nullable"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_open_fragment_with_param"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开本Graph中有参Fragment"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_open_common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开Graph B Common"
+        android:textAllCaps="false" />
+
+</LinearLayout>

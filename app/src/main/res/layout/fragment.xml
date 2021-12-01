@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="基本参数" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_int_in_main_graph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Int"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_string_in_main_graph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="String"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_string_nullable_in_main_graph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="String Nullable"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_param_in_graph_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main Graph，带参数跳转"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_no_param_in_graph_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Main Graph，无参数跳转"
+        android:textAllCaps="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp">
+
+        <EditText
+            android:id="@+id/et_int_in_sub_graph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Int"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_string_in_sub_graph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="String"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_string_nullable_in_sub_graph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="String Nullable"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_param_in_sub_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sub Graph，带参数跳转，是 Graph Dest"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_no_param_in_sub_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Sub Graph，无参数跳转，非 Graph Dest"
+        android:textAllCaps="false" />
+
+</LinearLayout>

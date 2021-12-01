@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            maven(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.java
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.github.XuQK'
+                artifactId = 'kd-nav-annotations'
+                version = '0.0.1'
+            }
+        }
+    }
+}

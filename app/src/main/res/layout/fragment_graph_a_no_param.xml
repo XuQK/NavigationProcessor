@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="基本参数" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_int_b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Int"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_string_b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="String"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_string_nullable_b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="String Nullable"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_open_graph_b_fragment_with_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开GraphB中的某个有参Fragment"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_open_graph_b_without_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="打开GraphB(无参)"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp">
+
+            <EditText
+                android:id="@+id/et_int_c"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Int"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_string_c"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="String"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_string_nullable_c"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="String Nullable"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_open_graph_c_with_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开GraphC（有参）"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_open_graph_c_fragment_without_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="打开GraphC中的某个无参Fragment（GraphC有参）"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp">
+
+            <EditText
+                android:id="@+id/et_int"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Int"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_string"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="String"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_string_nullable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="String Nullable"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_open_fragment_with_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开本Graph中有参Fragment"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_open_graph_b_no_param_fragment_as_this_graph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开GraphBNoParamFragmet，不作为GraphB的Dest"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_open_common"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开Graph A Common"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</ScrollView>

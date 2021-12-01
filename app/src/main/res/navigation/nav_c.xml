@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_c"
+    android:label="GraphC"
+    app:startDestination="@id/GraphCParamFragment">
+
+    <argument
+        android:name="argInt"
+        android:defaultValue="0"
+        app:argType="integer" />
+    <argument
+        android:name="argStringNullable"
+        android:defaultValue="@null"
+        app:argType="string"
+        app:nullable="true" />
+    <argument
+        android:name="argStringNonNull"
+        app:argType="string" />
+
+
+    <fragment
+        android:id="@+id/GraphCNoParamFragment"
+        android:name="github.xuqk.navigationprocessor.graph_c.GraphCNoParamFragment"
+        android:label="GraphCNoParamFragment"/>
+
+    <fragment
+        android:id="@+id/CommonFragment"
+        android:name="github.xuqk.navigationprocessor.CommonFragment"
+        android:label="CommonFragment"/>
+
+    <fragment
+        android:id="@+id/GraphCParamFragment"
+        android:name="github.xuqk.navigationprocessor.graph_c.GraphCParamFragment"
+        android:label="GraphCParamFragment">
+        <argument
+            android:name="argInt"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="argStringNullable"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="argStringNonNull"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+
+</navigation>
