@@ -23,15 +23,13 @@ java {
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             maven(MavenPublication) {
-                // Applies the component for the release build variant.
                 from components.java
 
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.github.XuQK'
                 artifactId = 'kd-nav-processor'
-                version = '0.0.1'
+                version = lib_version
             }
         }
     }

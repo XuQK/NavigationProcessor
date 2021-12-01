@@ -40,7 +40,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.github.XuQK'
                 artifactId = 'kd-nav-fragment-ktx'
-                version = '0.0.1'
+                version = lib_version
             }
         }
     }
