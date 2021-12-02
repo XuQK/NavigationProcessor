@@ -63,7 +63,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [
-                        projectDirPath : rootDir.path, // 此处为固定写法
+                        projectDirPath : projectDir.path, // 此处为固定写法
                         deepLinkHost : "nav://github.xuqk" // 此处为 deepLink 的 scheme 和 host
                 ]
             }

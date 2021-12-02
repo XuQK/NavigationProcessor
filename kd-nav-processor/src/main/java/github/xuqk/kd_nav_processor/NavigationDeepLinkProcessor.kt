@@ -271,7 +271,7 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
      */
     private fun resolveNavigationFile(): List<DeepLinkInfoEntity> {
         val navigationDir =
-            File("${projectDirPath}${File.separatorChar}app${File.separatorChar}src${File.separatorChar}main${File.separatorChar}res${File.separatorChar}navigation${File.separatorChar}")
+            File("${projectDirPath}${File.separatorChar}src${File.separatorChar}main${File.separatorChar}res${File.separatorChar}navigation${File.separatorChar}")
 
         val list = mutableListOf<DeepLinkInfoEntity>()
         val reader = SAXReader()
