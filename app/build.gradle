@@ -20,7 +20,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [
-                        projectDirPath : projectDir.path,
+                        projectDirPath : rootDir.path,
                         deepLinkHost : "nav://github.xuqk",
                 ]
             }
