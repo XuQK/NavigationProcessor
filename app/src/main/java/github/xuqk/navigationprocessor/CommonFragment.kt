@@ -15,7 +15,7 @@ import github.xuqk.navigationprocessor.databinding.FragmentCommonBinding
  * Description：
  */
 
-@NavigationDeepLink(path = "/CommonFragment", graphLabel = "GraphA")
+@NavigationDeepLink(path = "/xxx/CommonFragment", graphLabel = "GraphA")
 @NavigationDeepLink(path = "/CommonFragment", graphLabel = "GraphB")
 @NavigationDeepLink(path = "/CommonFragment", graphLabel = "GraphC")
 class CommonFragment : BaseFragment() {

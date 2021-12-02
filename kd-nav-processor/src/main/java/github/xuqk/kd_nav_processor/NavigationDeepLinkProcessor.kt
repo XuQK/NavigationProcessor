@@ -134,9 +134,9 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
             val funSpecBuilder = FunSpec.builder(funName)
                 .returns(ClassName.bestGuess("android.net.Uri"))
                 .addStatement("""val uriBuilder = Uri.parse("$deepLinkHost").buildUpon()""")
-                .addStatement(""".appendPath("${linkInfo.graphLabel}")""")
+                .addStatement(""".appendEncodedPath("${linkInfo.graphLabel}")""")
             if (!linkInfo.graphStartDest) {
-                funSpecBuilder.addStatement(""".appendPath("${linkInfo.path.dropWhile { it == '/' }}")""")
+                funSpecBuilder.addStatement(""".appendEncodedPath("${linkInfo.path.dropWhile { it == '/' }}")""")
             }
 
             linkInfo.deepLinkArgsEntities.forEach { args ->
