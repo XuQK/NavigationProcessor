@@ -56,9 +56,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5") {
-        exclude group: 'androidx.navigation', module: 'navigation-fragment'
-    }
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation project(':kd-nav-fragment-ktx')
     kapt project(':kd-nav-processor')
+}
+
+configurations {
+    all*.exclude group: 'androidx.navigation', module: 'navigation-fragment'
 }

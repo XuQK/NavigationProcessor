@@ -39,14 +39,19 @@ dependencyResolutionManagement {
 项目依赖：
 
 ```groovy
-// Fragment 依赖要用如下方式引入（当前适配版本2.3.5）：
-implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5") {
-    exclude group: 'androidx.navigation', module: 'navigation-fragment'
+dependencies {
+    // navigation 依赖
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    
+    // 本库依赖
+    implementation "com.github.XuQK.NavigationProcessor:kd-nav-fragment-ktx:versionCode"
+    kapt "com.github.XuQK.NavigationProcessor:kd-nav-processor:versionCode"
 }
 
-// 此处是库依赖
-implementation "com.github.XuQK.NavigationProcessor:kd-nav-fragment-ktx:versionCode"
-kapt "com.github.XuQK.NavigationProcessor:kd-nav-processor:versionCode"
+// 替换官方的 navigation-fragment 包
+configurations {
+    all*.exclude group: 'androidx.navigation', module: 'navigation-fragment'
+}
 ```
 
 ## 使用设置
