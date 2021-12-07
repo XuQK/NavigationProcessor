@@ -1,5 +1,7 @@
 package github.xuqk.kd_nav_processor
 
+import javax.lang.model.element.Element
+
 /**
  * Created By：XuQK
  * Created Date：2021/11/21 20:59
@@ -16,6 +18,7 @@ data class DeepLinkInfoEntity(
     var packageName: String,
     var classSimpleName: String,
     var deepLinkArgsEntities: List<DeepLinkArgsEntity>,
+    var element: Element? = null,
 ) {
     data class DeepLinkArgsEntity(
         val name: String,

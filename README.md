@@ -65,12 +65,10 @@ android {
     defaultConfig {
         ...
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        projectDirPath : projectDir.path, // 此处为固定写法
-                        deepLinkHost : "nav://github.xuqk" // 此处为 deepLink 的 scheme 和 host
-                ]
+        kapt {
+            arguments {
+                arg("projectDirPath", projectDir.path) // 此处为固定写法
+                arg("deepLinkHost", "nav://github.xuqk") // 此处为 deepLink 的 scheme 和 host
             }
         }
     }

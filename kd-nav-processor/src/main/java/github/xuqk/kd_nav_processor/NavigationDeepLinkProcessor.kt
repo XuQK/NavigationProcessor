@@ -35,6 +35,10 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
         deepLinkHost =
             requireNotNull(processingEnv.options["deepLinkHost"]) { "参数未配置：deepLinkHost" }
         filer = processingEnv.filer
+
+        println("projectDirPath:${projectDirPath}")
+        println("deepLinkHost:${deepLinkHost}")
+        println("kapt.kotlin.generated:${processingEnv.options["kapt.kotlin.generated"]}")
     }
 
     override fun process(
@@ -50,7 +54,7 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
         checkDeepLinkDuplicate(deepLinkInfoList)
         // 生成每个节点 Fragment 的 DeepLink Uri 生成类
         deepLinkInfoList.groupBy { it.className }.forEach {
-            generateDeepLinkFactory(it)
+            generateDeepLinkFactory( it)
         }
         // 生成所有节点的 DeepLink 信息，用于将 DeepLink 插入 graph
         generateDeepLinkInfoMapClass(deepLinkInfoList)
@@ -126,6 +130,8 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
         val companion = TypeSpec.companionObjectBuilder()
 
         map.value.forEach { linkInfo ->
+            classBuilder.addOriginatingElement(linkInfo.element!!)
+
             val funName = if (linkInfo.graphStartDest) {
                 "deepLinkIn" + linkInfo.graphLabel + "AsStartDest"
             } else {
@@ -263,6 +269,7 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
         }
         matchedLinkInfo.classSimpleName = element.simpleName.toString()
         matchedLinkInfo.packageName = element.enclosingElement.toString()
+        matchedLinkInfo.element = element
         return matchedLinkInfo
     }
 

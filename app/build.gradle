@@ -17,12 +17,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        projectDirPath : projectDir.path,
-                        deepLinkHost : "nav://github.xuqk",
-                ]
+        kapt {
+            arguments {
+                arg("projectDirPath", projectDir.path)
+                arg("deepLinkHost", "nav://github.xuqk")
             }
         }
     }
