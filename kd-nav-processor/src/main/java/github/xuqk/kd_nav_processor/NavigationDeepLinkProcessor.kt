@@ -35,10 +35,6 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
         deepLinkHost =
             requireNotNull(processingEnv.options["deepLinkHost"]) { "参数未配置：deepLinkHost" }
         filer = processingEnv.filer
-
-        println("projectDirPath:${projectDirPath}")
-        println("deepLinkHost:${deepLinkHost}")
-        println("kapt.kotlin.generated:${processingEnv.options["kapt.kotlin.generated"]}")
     }
 
     override fun process(
