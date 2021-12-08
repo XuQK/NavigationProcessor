@@ -10,14 +10,14 @@ import javax.lang.model.element.Element
  */
 
 data class DeepLinkInfoEntity(
-    val graphLabel: String,
-    val graphStartDest: Boolean,
-    val className: String,
-    var path: String,
-    var deepLinkUrl: String,
-    var packageName: String,
-    var classSimpleName: String,
-    var deepLinkArgsEntities: List<DeepLinkArgsEntity>,
+    val graphLabel: String = "",
+    val graphStartDest: Boolean = false,
+    val className: String = "",
+    var path: String = "",
+    var deepLinkUrl: String = "",
+    var packageName: String = "",
+    var classSimpleName: String = "",
+    var deepLinkArgsEntities: List<DeepLinkArgsEntity> = listOf(),
     var element: Element? = null,
 ) {
     data class DeepLinkArgsEntity(

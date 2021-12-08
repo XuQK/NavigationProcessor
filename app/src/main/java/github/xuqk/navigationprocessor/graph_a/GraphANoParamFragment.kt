@@ -1,16 +1,12 @@
 package github.xuqk.navigationprocessor.graph_a
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import github.xuqk.navigationprocessor.BaseFragment
 import github.xuqk.navigationprocessor.CommonFragmentDeepLinkFactory
-import github.xuqk.navigationprocessor.R
 import github.xuqk.navigationprocessor.databinding.FragmentGraphANoParamBinding
 import github.xuqk.navigationprocessor.graph_b.GraphBNoParamFragment
 import github.xuqk.navigationprocessor.graph_b.GraphBParamFragment

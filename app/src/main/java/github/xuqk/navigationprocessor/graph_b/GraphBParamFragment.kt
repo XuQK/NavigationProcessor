@@ -24,7 +24,6 @@ class GraphBParamFragment : BaseFragment() {
 
     companion object {
         fun start(navController: NavController, argInt: Int, argStringNullable: String?, argString: String) {
-            val a = null
             navController.navigate(
                 GraphBParamFragmentDeepLinkFactory.deepLinkInGraphB(argInt, argStringNullable, argString)
             )

@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/XuQK/NavigationProcessor.svg)](https://jitpack.io/#XuQK/NavigationProcessor)
 
-本库是给 Navigation 添加 APP 内部 DeepLink 路由的注解工具。
+本库是给 Navigation 添加 APP 内部 DeepLink 路由的注解工具，支持`kapt`和`ksp`。
 
 # 实现原理
 
@@ -12,6 +12,8 @@
 注意：项目中不能使用官方的`navigation-fragment-ktx`库。
 
 ## 引入依赖
+
+### 通用设置
 
 根目录下的`build.gradle`文件中：
 
@@ -36,29 +38,16 @@ dependencyResolutionManagement {
 }
 ```
 
-项目依赖：
+### 如果使用 kapt
+
+使用本库的模块的`build.gradle`文件：
 
 ```groovy
-dependencies {
-    // navigation 依赖
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
-    
-    // 本库依赖
-    implementation "com.github.XuQK.NavigationProcessor:kd-nav-fragment-ktx:versionCode"
-    kapt "com.github.XuQK.NavigationProcessor:kd-nav-processor:versionCode"
+plugins {
+    ...
+    id 'kotlin-kapt'
 }
 
-// 替换官方的 navigation-fragment 包
-configurations {
-    all*.exclude group: 'androidx.navigation', module: 'navigation-fragment'
-}
-```
-
-## 使用设置
-
-首先在主工程的`build.gradle`中指定工程路径和`deepLink`的`host`：
-
-```groovy
 android {
     ...
 
@@ -74,6 +63,101 @@ android {
     }
 
     ...
+}
+
+dependencies {
+    // navigation 依赖
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    
+    // 本库依赖
+    implementation "com.github.XuQK.NavigationProcessor:kd-nav-fragment-ktx:versionCode"
+    // 使用kapt
+    kapt "com.github.XuQK.NavigationProcessor:kd-nav-processor:versionCode"
+}
+
+// 替换官方的 navigation-fragment 包
+configurations {
+    all*.exclude group: 'androidx.navigation', module: 'navigation-fragment'
+}
+```
+
+### 如果尝鲜 ksp
+
+已知问题：如果进行了需要生成新的kt文件的操作，可能需要 run 两次才能正常识别。
+
+根目录下的`build.gradle`文件中：
+
+```groovy
+buildscript {
+    ...
+}
+
+plugins {
+    id "com.google.devtools.ksp" version "1.5.30-1.0.0"
+}
+```
+
+使用本库的模块的`build.gradle`文件：
+
+```groovy
+plugins {
+    ...
+    id 'com.google.devtools.ksp'
+}
+
+android {
+    ...
+
+    defaultConfig {
+        ...
+
+        ksp {
+            arg("projectDirPath", projectDir.path) // 此处为固定写法
+            arg("deepLinkHost", "nav://github.xuqk") // 此处为 deepLink 的 scheme 和 host
+        }
+    }
+
+    // 因为 ksp 生成的代码所在目录`build/generated/ksp/*/kotlin`不在源文件目录里
+    // 所以如果要 IDE 识别出来生成的代码，需要手动将其加入源文件中
+    buildTypes {
+        debug {
+            ...
+            sourceSets {
+                main {
+                    java {
+                        srcDir 'build/generated/ksp/debug/kotlin'
+                    }
+                }
+            }
+        }
+        release {
+            ...
+            sourceSets {
+                main {
+                    java {
+                        srcDir 'build/generated/ksp/release/kotlin'
+                    }
+                }
+            }
+        }
+    }
+
+    ...
+}
+
+dependencies {
+    // navigation 依赖
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
+
+    // 本库依赖
+    implementation "com.github.XuQK.NavigationProcessor:kd-nav-fragment-ktx:versionCode"
+    // 使用kapt
+    ksp "com.github.XuQK.NavigationProcessor:kd-nav-processor:versionCode"
+}
+
+// 替换官方的 navigation-fragment 包
+configurations {
+    all*.exclude group: 'androidx.navigation', module: 'navigation-fragment'
 }
 ```
 
@@ -115,5 +199,5 @@ public class CommonFragmentDeepLinkFactory() {
 
 # TODO
 
-- [ ] 增量编译支持
-- [ ] ksp 支持
+- [x] 增量编译支持
+- [x] ksp 支持
