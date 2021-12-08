@@ -83,7 +83,9 @@ configurations {
 
 ### 如果尝鲜 ksp
 
-已知问题：如果进行了需要生成新的kt文件的操作，可能需要 run 两次才能正常识别。
+已知问题：
+1. 如果进行了需要生成新的kt文件的操作，可能需要 run 两次才能正常识别。
+2. 由于需要手动将ksp生成的代码目录加入每个buildType的sourceSets，所以编译的时候会有 Redeclaration 报错，请自行根据自己的需求解决。
 
 根目录下的`build.gradle`文件中：
 

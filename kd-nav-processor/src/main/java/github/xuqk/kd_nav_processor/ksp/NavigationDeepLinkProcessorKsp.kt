@@ -3,6 +3,7 @@ package github.xuqk.kd_nav_processor.ksp
 import com.google.devtools.ksp.processing.*
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSAnnotation
+import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.squareup.kotlinpoet.FileSpec
 import github.xuqk.kd_nav_annotations.NavigationDeepLink
@@ -86,20 +87,22 @@ class NavigationDeepLinkProcessorKsp(
         val deepLinkInfoListFromClass = mutableListOf<DeepLinkInfoEntity>()
 
         resolver.getAllFiles().flatMap { it.declarations }.forEach { ksDeclaration ->
-            ksDeclaration.annotations.forEach { ksAnnotation ->
-                if (getAnnotationQualifiedName(ksAnnotation) == annotationQualifiedName) {
-                    deepLinkInfoListFromClass.add(
-                        DeepLinkInfoEntity(
-                            graphLabel = getAnnotationArgumentByName(
-                                ksAnnotation,
-                                "graphLabel"
-                            ).second,
-                            path = getAnnotationArgumentByName(ksAnnotation, "path").second,
-                            packageName = ksDeclaration.packageName.asString(),
-                            className = getDeclarationQualifiedName(ksDeclaration),
-                            classSimpleName = ksDeclaration.simpleName.asString(),
+            if (ksDeclaration is KSClassDeclaration) {
+                ksDeclaration.annotations.forEach { ksAnnotation ->
+                    if (getAnnotationQualifiedName(ksAnnotation) == annotationQualifiedName) {
+                        deepLinkInfoListFromClass.add(
+                            DeepLinkInfoEntity(
+                                graphLabel = getAnnotationArgumentByName(
+                                    ksAnnotation,
+                                    "graphLabel"
+                                ).second,
+                                path = getAnnotationArgumentByName(ksAnnotation, "path").second,
+                                packageName = ksDeclaration.packageName.asString(),
+                                className = getDeclarationQualifiedName(ksDeclaration),
+                                classSimpleName = ksDeclaration.simpleName.asString(),
+                            )
                         )
-                    )
+                    }
                 }
             }
         }

@@ -5,6 +5,7 @@ import github.xuqk.kd_nav_annotations.NavigationDeepLink
 import github.xuqk.kd_nav_processor.*
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
+import javax.lang.model.element.ElementKind
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
@@ -83,16 +84,18 @@ class NavigationDeepLinkProcessor : AbstractProcessor() {
         val deepLinkInfoListFromClass = mutableListOf<DeepLinkInfoEntity>()
 
         roundEnv.rootElements.forEach { element ->
-            element.getAnnotationsByType(NavigationDeepLink::class.java).forEach {
-                deepLinkInfoListFromClass.add(
-                    DeepLinkInfoEntity(
-                        graphLabel = it.graphLabel,
-                        path = it.path,
-                        packageName = element.enclosingElement.toString(),
-                        className = element.toString(),
-                        classSimpleName = element.simpleName.toString()
+            if (element.kind == ElementKind.CLASS) {
+                element.getAnnotationsByType(NavigationDeepLink::class.java).forEach {
+                    deepLinkInfoListFromClass.add(
+                        DeepLinkInfoEntity(
+                            graphLabel = it.graphLabel,
+                            path = it.path,
+                            packageName = element.enclosingElement.toString(),
+                            className = element.toString(),
+                            classSimpleName = element.simpleName.toString()
+                        )
                     )
-                )
+                }
             }
         }
         return deepLinkInfoListFromClass
