@@ -25,7 +25,6 @@ class NavigationDeepLinkProcessorKsp(
 ) : SymbolProcessor {
 
     private var invoked = false
-    private var codeGenerating = false
 
     private val annotationQualifiedName = requireNotNull(NavigationDeepLink::class.qualifiedName)
 
@@ -39,28 +38,18 @@ class NavigationDeepLinkProcessorKsp(
         val deepLinkInfoListFromXml = resolveNavigationFile(projectDirPath)
         // 筛选出需要 DeepLink 的节点，填充 DeepLink 信息
         val deepLinkInfoList = filterAndFillDeepLinkInfo(deepLinkInfoListFromXml, resolver)
-        logger.warn(deepLinkInfoList.joinToString("\n"))
         invoked = deepLinkInfoList.isNotEmpty()
         // 检查有没有重复的 DeepLink path
         checkDeepLinkDuplicate(deepLinkInfoList)
 
         thread {
-            codeGenerating = true
-
             // 生成每个节点 Fragment 的 DeepLink Uri 生成类
             deepLinkInfoList.groupBy { it.className }.forEach {
                 createNewFile(generateDeepLinkFactoryFileSpec(deepLinkHost, it))
             }
             // 生成所有节点的 DeepLink 信息，用于将 DeepLink 插入 graph
             createNewFile(generateDeepLinkInfoMapFileSpec(deepLinkInfoList))
-
-            codeGenerating = false
-        }
-
-        while (codeGenerating) {
-            Thread.sleep(100)
-            continue
-        }
+        }.join()
 
         logger.warn("NavigationDeepLinkProcessorKsp: 注解处理用时 ${System.currentTimeMillis() - t} ms")
         return emptyList()

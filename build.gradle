@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.lib_version = '0.0.5'
-    ext.use_ksp = false
+    ext.use_ksp = true
     repositories {
         google()
         mavenCentral()
